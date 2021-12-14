@@ -6,7 +6,43 @@
         xmlns:local="clr-namespace:WpfApp10"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="0, 10, 10, 10" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+        <Style x:Key="InputTitleStyle" TargetType="Label">
+            <Setter Property="Margin" Value="5, 15, 5, 0"></Setter>
+        </Style>
+        <Style x:Key="InputTextStyle" TargetType="TextBox">
+            <Setter Property="Margin" Value="5, 0" />
+            <Setter Property="Width" Value="300" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+    </Window.Resources>
+    <Grid FocusManager.FocusedElement="{Binding ElementName=nameText}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="89*" />
+            <RowDefinition Height="18*" />
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <Label Content="Name(_N)" Target="{Binding ElementName=nameText}" Style="{StaticResource InputTitleStyle}" />
+            <TextBox x:Name="nameText" Text="Sally" Style="{StaticResource InputTextStyle}" />
+            <Label Content="Age(_A)" Target="{Binding ElementName=ageText}" Style="{StaticResource InputTitleStyle}" />
+            <TextBox x:Name="ageText" Text="34" Style="{StaticResource InputTextStyle}" />
+            <Label Content="Blood Type(_B)" Target="{Binding ElementName=Blood}" Style="{StaticResource InputTitleStyle}" />
+            <ComboBox x:Name="Blood" Margin="5, 0" Width="100" HorizontalAlignment="Left">
+                <ComboBoxItem Content="A" />
+                <ComboBoxItem Content="B" />
+                <ComboBoxItem Content="O" />
+                <ComboBoxItem Content="AB" />
+            </ComboBox>
+            
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="button" Content="Button" Width="75" />
+            <Button x:Name="closeButton" Content="Close(_C)" Width="75" />
+        </StackPanel>
     </Grid>
 </Window>

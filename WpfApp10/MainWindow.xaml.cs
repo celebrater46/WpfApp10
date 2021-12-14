@@ -24,5 +24,10 @@ namespace WpfApp10
         {
             InitializeComponent();
         }
+
+        private void CloseButtonClick(Object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
