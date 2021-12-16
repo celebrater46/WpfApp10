@@ -29,5 +29,21 @@ namespace WpfApp10
         {
             this.Close();
         }
+
+        private void WindowContentRendered(object sender, EventArgs e)
+        {
+            this.Title = Properties.Settings.Default.WindowTitle;
+            nameText.Text = Properties.Settings.Default.UserName;
+            ageText.Text = Properties.Settings.Default.Age.ToString();
+            Blood.SelectedIndex = Properties.Settings.Default.Blood;
+        }
+
+        private void WindowClosed(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.UserName = nameText.Text;
+            Properties.Settings.Default.Age = int.Parse(ageText.Text);
+            Properties.Settings.Default.Blood = Blood.SelectedIndex;
+            Properties.Settings.Default.Save();
+        }
     }
 }
